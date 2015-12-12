@@ -32,6 +32,14 @@ class ofApp : public ofBaseApp{
     ofParameter<int> num;
     ofParameter<float> size;
     
+    ofParameter<float> rotateX;
+    ofParameter<float> rotateY;
+    ofParameter<float> rotateZ;
+    
+    float rotationX = 0.0;
+    float rotationY = 0.0;
+    float rotationZ = 0.0;
+    
     ofParameterGroup guiGroup;
 		
 };

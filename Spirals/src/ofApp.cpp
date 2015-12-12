@@ -20,11 +20,17 @@ void ofApp::setup(){
     gui.add(a.set("a", 0.5, 0, 2.0));
     gui.add(d.set("d", 5, 0, 20));
     
+    gui.add(rotateX.set("rotX", 0.0, -0.03, 0.03));
+    gui.add(rotateY.set("rotY", 0.0, -0.03, 0.03));
+    gui.add(rotateZ.set("rotZ", 0.0, -0.03, 0.03));
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    rotationX = rotationX + rotateX;
+    rotationY = rotationY + rotateY;
+    rotationZ = rotationZ + rotateZ;
 }
 
 //--------------------------------------------------------------
@@ -36,8 +42,11 @@ void ofApp::draw(){
     
     float f = TWO_PI * (sqrt((int)d) - 1) * a;
     for (int r = 0; r < num; r++) {
+        ofRotateX(rotationX);
+        ofRotateY(rotationY);
+        ofRotateZ(rotationZ);
         ofSetColor(ofColor(sin(f*r) * 255, cos(f*r) * 255, sin(f) * 255));
-        ofDrawCircle(cos(f*r)*r, sin(f*r)*r, size * (cos(r)));
+        ofDrawSphere(cos(f*r)*r, sin(f*r)*r, size * (cos(r)));
     }
     
     mCam.end();

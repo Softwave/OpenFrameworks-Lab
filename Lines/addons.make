@@ -1,0 +1,4 @@
+ofxBlur
+ofxGrabCam
+ofxGui
+ofxXmlSettings

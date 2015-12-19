@@ -39,7 +39,7 @@ class ofApp : public ofBaseApp{
     float rotationX = 0.0;
     float rotationY = 0.0;
     float rotationZ = 0.0;
-    
+        
     ofParameterGroup guiGroup;
 		
 };

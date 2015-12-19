@@ -1,5 +1,17 @@
 #include "ofApp.h"
 
+/* SPIRALS
+ * 
+ * Generate cool spirals 
+ * Made with C++ and OpenFrameworks
+ * Only tested on OS X El Capitan
+ * 
+ * This is free and unencumbered software released into the public domain.
+ * 
+ * Libraries and frameworks used are copyright of their respective authors.
+ */
+
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
@@ -24,6 +36,7 @@ void ofApp::setup(){
     gui.add(rotateY.set("rotY", 0.0, -0.03, 0.03));
     gui.add(rotateZ.set("rotZ", 0.0, -0.03, 0.03));
     
+    
 }
 
 //--------------------------------------------------------------
@@ -47,6 +60,7 @@ void ofApp::draw(){
         ofRotateZ(rotationZ);
         ofSetColor(ofColor(sin(f*r) * 255, cos(f*r) * 255, sin(f) * 255));
         ofDrawSphere(cos(f*r)*r, sin(f*r)*r, size * (cos(r)));
+        //ofDrawSphere(cos(f*r)*r, sin(f*r)*r, size * (cos(r)) * f);
     }
     
     mCam.end();
@@ -56,12 +70,26 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    if (key == 's') {
+        gui.saveToFile("settings.xml");
+    }
+    
+    if (key == 'l') {
+        gui.loadFromFile("settings.xml");
+    }
+    
+    if (key == 'p') {
+        ofSaveViewport("screen" + ofGetTimestampString() + ".png");
+    }
+    
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    if (key == 'd') {
+        std::cout << ofGetTimestampString() << "test" << std::endl;
+    }
 }
 
 //--------------------------------------------------------------

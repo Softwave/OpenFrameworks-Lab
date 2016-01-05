@@ -25,6 +25,9 @@ class ofApp : public ofBaseApp{
     //CAMERA
     ofEasyCam mCam;
     
+    //Save Screenshot
+    bool saveImg;
+    
     //GUI
     ofxPanel gui;
     ofParameter<float> a;

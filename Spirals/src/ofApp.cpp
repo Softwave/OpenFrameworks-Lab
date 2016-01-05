@@ -18,6 +18,9 @@ void ofApp::setup(){
     
     ofSetWindowTitle("Spirals");
     
+    //Save image
+    saveImg = false;
+    
     //Gui styling
     ofxGuiSetBackgroundColor(ofColor(100,0,200));
     ofxGuiSetFillColor(ofColor(255,0,170));
@@ -63,6 +66,11 @@ void ofApp::draw(){
         //ofDrawSphere(cos(f*r)*r, sin(f*r)*r, size * (cos(r)) * f);
     }
     
+    if (saveImg) {
+        ofSaveViewport("screen" + ofGetTimestampString() + ".png");
+        saveImg = false;
+    }
+    
     mCam.end();
     ofDisableDepthTest();
     gui.draw();
@@ -78,10 +86,6 @@ void ofApp::keyPressed(int key){
         gui.loadFromFile("settings.xml");
     }
     
-    if (key == 'p') {
-        ofSaveViewport("screen" + ofGetTimestampString() + ".png");
-    }
-    
     
 }
 
@@ -89,6 +93,10 @@ void ofApp::keyPressed(int key){
 void ofApp::keyReleased(int key){
     if (key == 'd') {
         std::cout << ofGetTimestampString() << "test" << std::endl;
+    }
+    
+    if (key == 'p') {
+        saveImg = true;
     }
 }
 
